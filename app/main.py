@@ -8,10 +8,12 @@ from starlette.middleware.cors import CORSMiddleware
 from starlette.responses import JSONResponse
 
 from app.api.app_v1.endpoints.connect import api_connect
+from app.api.app_v1.endpoints.stream import api_stream
 
 app = FastAPI()
 
 app.include_router(api_connect.api_router, prefix='/v1')
+app.include_router(api_stream.api_router, prefix='/v1')
 
 app.add_middleware(
     CORSMiddleware,

@@ -12,8 +12,8 @@ api_router = APIRouter()
 
 @api_router.post("")
 def create_user(user_request: UserRequest, request: Request):
-    data = user_request.dict()
-    return user.create(data=data)
+    body = user_request.dict()
+    return user.create(body=body)
 
 
 @api_router.get("")
