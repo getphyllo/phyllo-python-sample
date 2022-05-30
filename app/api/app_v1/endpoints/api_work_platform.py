@@ -1,7 +1,6 @@
-from http import HTTPStatus
 from typing import Optional
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter
 from pydantic import conint
 
 from app.utils.phyllo_api import work_platform
