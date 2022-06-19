@@ -4,7 +4,7 @@ from typing import Optional
 from fastapi import APIRouter
 from pydantic import conint
 
-from app.utils.phyllo_api import income
+from app.services import income
 
 api_router = APIRouter()
 

@@ -2,7 +2,7 @@ from fastapi import APIRouter
 from starlette.requests import Request
 
 from app.schemas.sdk_token import SdkTokenRequest
-from app.utils.phyllo_api import sdk_token
+from app.services import sdk_token
 
 api_router = APIRouter()
 

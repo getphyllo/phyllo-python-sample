@@ -3,7 +3,7 @@ from typing import Optional
 from fastapi import APIRouter
 from pydantic import conint
 
-from app.utils.phyllo_api import work_platform
+from app.services import work_platform
 
 api_router = APIRouter()
 

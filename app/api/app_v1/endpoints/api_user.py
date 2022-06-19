@@ -5,7 +5,7 @@ from pydantic import conint
 from starlette.requests import Request
 
 from app.schemas.user import UserRequest
-from app.utils.phyllo_api import user
+from app.services import user
 
 api_router = APIRouter()
 

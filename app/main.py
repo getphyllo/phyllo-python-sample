@@ -1,11 +1,7 @@
-from http import HTTPStatus
-from http.client import INTERNAL_SERVER_ERROR, BAD_REQUEST
-
 import uvicorn
 from fastapi import FastAPI
-from sqlalchemy.exc import DataError
 from starlette.middleware.cors import CORSMiddleware
-from starlette.responses import JSONResponse
+
 
 from app.api.app_v1.endpoints import api_endpoints
 
@@ -20,19 +16,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-
-@app.exception_handler(Exception)
-def custom_http_exception_handler(request, exc):
-    status_code = HTTPStatus.INTERNAL_SERVER_ERROR
-    message = INTERNAL_SERVER_ERROR
-    if type(exc) is DataError:
-        status_code = HTTPStatus.BAD_REQUEST
-        message = BAD_REQUEST
-    return JSONResponse(
-        status_code=status_code,
-        content={"message": message},
-    )
 
 
 @app.get("/")
