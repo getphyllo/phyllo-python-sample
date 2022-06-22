@@ -2,7 +2,7 @@ from fastapi import HTTPException
 import requests
 from requests.auth import HTTPBasicAuth
 
-from app.utils.phyllo_config import CLIENT_ID, CLIENT_SECRET, BASE_URL
+from app.utils.phyllo_config import CLIENT_ID, CLIENT_SECRET, BASE_URL, WEBHOOK_URL
 
 
 def get_all_account(query_param: dict):
@@ -147,6 +147,52 @@ def get_audience(query_param: dict):
     try:
         response = requests.get(BASE_URL + "/v1/audience", auth=HTTPBasicAuth(CLIENT_ID,
                                                                               CLIENT_SECRET), params=query_param)
+        return response.json()
+
+    except requests.exceptions.RequestException as err:
+        raise HTTPException(status_code=500, detail="INTERNAL SERVER ERROR")
+
+
+def create_webhook():
+    try:
+        request_body = {
+            "url": WEBHOOK_URL,
+            "events": [
+                "ACCOUNTS.CONNECTED",
+                "PROFILES.ADDED",
+                "CONTENT.ADDED"
+            ]
+        }
+        response = requests.post(BASE_URL + "/v1/webhooks", auth=HTTPBasicAuth(CLIENT_ID,
+                                                                               CLIENT_SECRET), json=request_body)
+        return response.json()
+
+    except requests.exceptions.RequestException as err:
+        raise HTTPException(status_code=500, detail="INTERNAL SERVER ERROR")
+
+
+def get_all_webhooks():
+    try:
+        response = requests.get(BASE_URL + "/v1/webhooks", auth=HTTPBasicAuth(CLIENT_ID,
+                                                                              CLIENT_SECRET))
+        return response.json()
+
+    except requests.exceptions.RequestException as err:
+        raise HTTPException(status_code=500, detail="INTERNAL SERVER ERROR")
+
+
+def update_webhook(id: str):
+    try:
+        request_body = {
+            "url": WEBHOOK_URL,
+            "events": [
+                "ACCOUNTS.CONNECTED",
+                "PROFILES.ADDED",
+                "CONTENT.ADDED"
+            ]
+        }
+        response = requests.post(BASE_URL + f"/v1/webhooks/{id}", auth=HTTPBasicAuth(CLIENT_ID,
+                                                                                     CLIENT_SECRET), json=request_body)
         return response.json()
 
     except requests.exceptions.RequestException as err:

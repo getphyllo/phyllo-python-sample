@@ -1,6 +1,9 @@
 from __future__ import annotations
 
 from pydantic import BaseModel
+from sqlalchemy.testing.plugin.plugin_base import log
+
+from app.utils.phyllo_api import get_account_by_id
 
 
 class WebhookPayload(BaseModel):
@@ -15,7 +18,8 @@ class WebhookPayload(BaseModel):
 def analyse_and_store_webhook(webhook_payload: WebhookPayload):
     if webhook_payload.event == "ACCOUNTS.CONNECTED":
         account_id = webhook_payload.data['account_id']
-        # Fetch account info from account id
+        account = get_account_by_id(id=account_id)
+        log.info(account)
     if webhook_payload.event == "PROFILES.ADDED":
         # Fetch Profile info
         pass
