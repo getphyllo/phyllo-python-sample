@@ -24,5 +24,4 @@ def root():
 
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8870, proxy_headers=True, forwarded_allow_ips="*",
-                use_colors=True)
+    uvicorn.run(app, host="0.0.0.0", port=9000, forwarded_allow_ips="*")

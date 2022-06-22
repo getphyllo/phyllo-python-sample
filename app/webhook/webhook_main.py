@@ -7,6 +7,7 @@ from sqlalchemy.exc import DataError
 from starlette.responses import JSONResponse
 
 from app.webhook.webhook_service import WebhookPayload, analyse_and_store_webhook
+from app.webhook.webhook_setup import configure_webhook
 
 app = FastAPI()
 
@@ -16,5 +17,5 @@ async def receive_webhook(webhook_payload: WebhookPayload):
     return analyse_and_store_webhook(webhook_payload)
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8870, proxy_headers=True, forwarded_allow_ips="*",
-                use_colors=True)
+    configure_webhook()
+    uvicorn.run(app, host="0.0.0.0", port=9003, forwarded_allow_ips="*",)
