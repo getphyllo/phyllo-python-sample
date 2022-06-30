@@ -96,7 +96,7 @@ Simply clone or fork this repo and follow the instructions.
 
 ## Usage
 
-### Run locally
+### Run project locally
 
 You can make requests to any API endpoints by using the same path as described in [our API documentation](https://docs.getphyllo.com/docs/api-reference/api/ref) with the base URL as your localhost. For example, to [create a user](https://docs.getphyllo.com/docs/api-reference/api/ref/operations/create-a-v-1-user), you could send a `POST` request to `localhost:9000/v1/users` and it would behave the same as our API does.
 
