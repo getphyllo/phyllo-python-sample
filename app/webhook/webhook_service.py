@@ -38,5 +38,9 @@ async def analyse_and_store_webhook(request: Request):
         # Fetch Profile info
         pass
 
+    # Add other events check which you wish to receive and call corresponding APIs
+
+
+
     # Store the webhook info into db
     return webhook_payload.data
