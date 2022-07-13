@@ -6,7 +6,5 @@ def configure_webhook():
     if len(webhooks) == 0:
         create_webhook()
     else:
-        webhook_id = webhooks[0]["id"]
+        webhook_id = webhooks["data"][0]["id"]
         update_webhook(id=webhook_id)
-
-
