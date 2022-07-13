@@ -2,7 +2,7 @@ from fastapi import HTTPException
 import requests
 from requests.auth import HTTPBasicAuth
 
-from app.utils.phyllo_config import CLIENT_ID, CLIENT_SECRET, BASE_URL, WEBHOOK_URL
+from app.utils.phyllo_config import CLIENT_ID, CLIENT_SECRET, BASE_URL, WEBHOOK_URL, SUPPORTED_WEBHOOK_EVENTS
 
 
 def get_all_account(query_param: dict):
@@ -157,11 +157,7 @@ def create_webhook():
     try:
         request_body = {
             "url": WEBHOOK_URL,
-            "events": [
-                "ACCOUNTS.CONNECTED",
-                "PROFILES.ADDED",
-                "CONTENT.ADDED"
-            ]
+            "events": SUPPORTED_WEBHOOK_EVENTS,
         }
         response = requests.post(BASE_URL + "/v1/webhooks", auth=HTTPBasicAuth(CLIENT_ID,
                                                                                CLIENT_SECRET), json=request_body)
@@ -185,11 +181,7 @@ def update_webhook(id: str):
     try:
         request_body = {
             "url": WEBHOOK_URL,
-            "events": [
-                "ACCOUNTS.CONNECTED",
-                "PROFILES.ADDED",
-                "CONTENT.ADDED"
-            ]
+            "events": SUPPORTED_WEBHOOK_EVENTS
         }
         response = requests.post(BASE_URL + f"/v1/webhooks/{id}", auth=HTTPBasicAuth(CLIENT_ID,
                                                                                      CLIENT_SECRET), json=request_body)
