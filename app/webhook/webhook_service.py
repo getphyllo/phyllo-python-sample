@@ -20,12 +20,16 @@ class WebhookPayload(BaseModel):
         return super().__str__()
 
 
-def analyse_and_store_webhook(webhook_payload: WebhookPayload, request: Request):
+async def analyse_and_store_webhook(request: Request):
     signature = request.headers.get("Phyllo-Signature")
-    flag: bool = Utility().verify_signature(json.dumps(webhook_payload), signature=signature,
+    body = await request.json()
+    flag: bool = Utility().verify_signature(json.dumps(body), signature=signature,
                                             key=CLIENT_SECRET)
+    # Do check whether this flag is true or not
+    if not flag:
+        raise Exception("Unauthorised webhook event")
 
-    print("*** flag == ", flag)
+    webhook_payload: WebhookPayload = WebhookPayload(**body)
     if webhook_payload.event == "ACCOUNTS.CONNECTED":
         account_id = webhook_payload.data['account_id']
         account = get_account_by_id(id=account_id)

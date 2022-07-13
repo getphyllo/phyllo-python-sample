@@ -121,8 +121,10 @@ could send a `POST` request to `localhost:9000/v1/users` and it would behave the
   similar [tunneling tool](https://github.com/anderspitman/awesome-tunneling)) and register the obtained URL in the
   sandbox.
 -
+
 Send [mock requests to the webhook](https://docs.getphyllo.com/docs/api-reference/api/ref/operations/create-a-v-1-webhook-send)
 to check if everything works as expected.
+
 - If you are doing frontend development, you would keep getting auto-generated webhooks when you connect accounts.
 
 ### Run tests
@@ -184,6 +186,7 @@ This repo is inspired by:
 ## About Authors
 
 `phyllo-python-sample` is created & maintained by Phyllo, Inc. You can find us on Twitter
+
 - [@getphyllo](https://twitter.com/getphyllo) or join our Discord community using this invite link.
 
 The names and logos for Phyllo are trademarks of Phyllo, Inc.

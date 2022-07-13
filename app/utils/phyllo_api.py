@@ -184,7 +184,7 @@ def update_webhook(id: str):
             "events": SUPPORTED_WEBHOOK_EVENTS
         }
         response = requests.put(BASE_URL + f"/v1/webhooks/{id}", auth=HTTPBasicAuth(CLIENT_ID,
-                                                                                     CLIENT_SECRET), json=request_body)
+                                                                                    CLIENT_SECRET), json=request_body)
         return response.json()
 
     except requests.exceptions.RequestException as err:
