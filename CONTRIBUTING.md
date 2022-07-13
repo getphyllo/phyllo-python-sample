@@ -3,7 +3,8 @@
 Thanks for contributing! :smile:
 We love contributions from everyone.
 
-The following is a set of guidelines for contributing. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.
+The following is a set of guidelines for contributing. These are mostly guidelines, not rules. Use your best judgment,
+and feel free to propose changes to this document in a pull request.
 
 _Note: Contributions should be made via pull requests to the main branch of the repository._
 
@@ -81,15 +82,13 @@ You can contribute by:
 
 ### Pull Requests
 
-Make sure to document the contributions well in the pull request.
-Pull requests should have:
+Make sure to document the contributions well in the pull request. Pull requests should have:
 
 - A concise commit message.
 - A description of what was changed/added.
 
-You can find inspiration here for a [good commit message](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html).
+You can find inspiration here for
+a [good commit message](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html).
 
-Others will give constructive feedback.
-This is a time for discussion and improvements,
-and making the necessary changes will be required before we can
-merge the contribution.
+Others will give constructive feedback. This is a time for discussion and improvements, and making the necessary changes
+will be required before we can merge the contribution.

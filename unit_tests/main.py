@@ -5,9 +5,9 @@ from unittest import loader
 
 from unit_tests.service.account import TestAccount
 from unit_tests.service.content import TestContent
+from unit_tests.service.income import TestIncome
 from unit_tests.service.profile import TestProfile
 from unit_tests.service.user import TestUser
-from unit_tests.service.income import TestIncome
 from unit_tests.service.work_platfrom import TestWorkPlatform
 
 sys.path.append(os.path.realpath('.'))

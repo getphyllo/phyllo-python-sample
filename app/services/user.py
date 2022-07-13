@@ -6,10 +6,12 @@ def create(body: dict):
     # Add business logic here
     return user
 
+
 def get_all(query_param: dict):
     users = get_all_user(query_param=query_param)
     # Add business logic here
     return users
+
 
 def get_by_id(id: str):
     user = get_user_by_id(id=id)

@@ -1,5 +1,5 @@
-from fastapi import HTTPException
 import requests
+from fastapi import HTTPException
 from requests.auth import HTTPBasicAuth
 
 from app.utils.phyllo_config import CLIENT_ID, CLIENT_SECRET, BASE_URL, WEBHOOK_URL, SUPPORTED_WEBHOOK_EVENTS
@@ -183,8 +183,8 @@ def update_webhook(id: str):
             "url": WEBHOOK_URL,
             "events": SUPPORTED_WEBHOOK_EVENTS
         }
-        response = requests.post(BASE_URL + f"/v1/webhooks/{id}", auth=HTTPBasicAuth(CLIENT_ID,
-                                                                                     CLIENT_SECRET), json=request_body)
+        response = requests.put(BASE_URL + f"/v1/webhooks/{id}", auth=HTTPBasicAuth(CLIENT_ID,
+                                                                                    CLIENT_SECRET), json=request_body)
         return response.json()
 
     except requests.exceptions.RequestException as err:
