@@ -1,4 +1,4 @@
-from app.utils.phyllo_api import get_all_webhooks, create_webhook, update_webhook
+from app.webhook.webhook_service import get_all_webhooks, create_webhook, update_webhook
 
 
 def configure_webhook():

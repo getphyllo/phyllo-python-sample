@@ -20,6 +20,44 @@ class WebhookPayload(BaseModel):
         return super().__str__()
 
 
+def get_all_webhooks():
+    try:
+        response = requests.get(BASE_URL + "/v1/webhooks", auth=HTTPBasicAuth(CLIENT_ID,
+                                                                              CLIENT_SECRET))
+        return response.json()
+
+    except requests.exceptions.RequestException as err:
+        raise HTTPException(status_code=500, detail="INTERNAL SERVER ERROR")
+
+
+def create_webhook():
+    try:
+        request_body = {
+            "url": WEBHOOK_URL,
+            "events": SUPPORTED_WEBHOOK_EVENTS,
+        }
+        response = requests.post(BASE_URL + "/v1/webhooks", auth=HTTPBasicAuth(CLIENT_ID,
+                                                                               CLIENT_SECRET), json=request_body)
+        return response.json()
+
+    except requests.exceptions.RequestException as err:
+        raise HTTPException(status_code=500, detail="INTERNAL SERVER ERROR")
+
+
+def update_webhook(id: str):
+    try:
+        request_body = {
+            "url": WEBHOOK_URL,
+            "events": SUPPORTED_WEBHOOK_EVENTS
+        }
+        response = requests.put(BASE_URL + f"/v1/webhooks/{id}", auth=HTTPBasicAuth(CLIENT_ID,
+                                                                                    CLIENT_SECRET), json=request_body)
+        return response.json()
+
+    except requests.exceptions.RequestException as err:
+        raise HTTPException(status_code=500, detail="INTERNAL SERVER ERROR")
+
+
 async def analyse_and_store_webhook(request: Request):
     signature = request.headers.get("Phyllo-Signature")
     body = await request.json()
@@ -44,3 +82,5 @@ async def analyse_and_store_webhook(request: Request):
 
     # Store the webhook info into db
     return webhook_payload.data
+
+
