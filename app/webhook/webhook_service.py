@@ -1,6 +1,11 @@
 from __future__ import annotations
 
 import json
+import requests
+from fastapi import HTTPException
+from requests.auth import HTTPBasicAuth
+
+from app.utils.phyllo_config import CLIENT_ID, CLIENT_SECRET, BASE_URL, WEBHOOK_URL, SUPPORTED_WEBHOOK_EVENTS
 
 from pydantic import BaseModel
 from requests import Request
