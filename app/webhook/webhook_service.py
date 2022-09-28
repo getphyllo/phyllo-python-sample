@@ -5,7 +5,7 @@ import requests
 from fastapi import HTTPException
 from requests.auth import HTTPBasicAuth
 
-from app.utils.phyllo_config import CLIENT_ID, CLIENT_SECRET, BASE_URL, WEBHOOK_URL, SUPPORTED_WEBHOOK_EVENTS
+from app.utils.phyllo_config import CLIENT_ID, CLIENT_SECRET, BASE_URL, WEBHOOK_NAME, WEBHOOK_URL, SUPPORTED_WEBHOOK_EVENTS
 
 from pydantic import BaseModel
 from requests import Request
@@ -40,6 +40,7 @@ def create_webhook():
         request_body = {
             "url": WEBHOOK_URL,
             "events": SUPPORTED_WEBHOOK_EVENTS,
+            "name": WEBHOOK_NAME
         }
         response = requests.post(BASE_URL + "/v1/webhooks", auth=HTTPBasicAuth(CLIENT_ID,
                                                                                CLIENT_SECRET), json=request_body)
@@ -53,7 +54,8 @@ def update_webhook(id: str):
     try:
         request_body = {
             "url": WEBHOOK_URL,
-            "events": SUPPORTED_WEBHOOK_EVENTS
+            "events": SUPPORTED_WEBHOOK_EVENTS,
+            "name": WEBHOOK_NAME
         }
         response = requests.put(BASE_URL + f"/v1/webhooks/{id}", auth=HTTPBasicAuth(CLIENT_ID,
                                                                                     CLIENT_SECRET), json=request_body)
