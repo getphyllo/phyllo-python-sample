@@ -2,7 +2,7 @@ import requests
 from fastapi import HTTPException
 from requests.auth import HTTPBasicAuth
 
-from app.utils.phyllo_config import CLIENT_ID, CLIENT_SECRET, BASE_URL, WEBHOOK_URL, SUPPORTED_WEBHOOK_EVENTS
+from app.utils.phyllo_config import CLIENT_ID, CLIENT_SECRET, BASE_URL
 
 
 def get_all_account(query_param: dict):
