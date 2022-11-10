@@ -172,7 +172,7 @@ This repo is inspired by:
 
 ## About Authors
 
-`phyllo-python-sample` is created & maintained by Phyllo, Inc. You can find us on Twitter - [@getphyllo](https://twitter.com/getphyllo) or join our Discord community using this invite link.
+`phyllo-python-sample` is created & maintained by Phyllo, Inc. You can find us on Twitter - [@getphyllo](https://twitter.com/getphyllo) or join our Discord community using [this invite link](https://discord.gg/FqPgyeWu37).
 
 The names and logos for Phyllo are trademarks of Phyllo, Inc.
 
