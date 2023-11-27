@@ -4,12 +4,12 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-python-decouple = "*"
-requests = "*"
-fastapi = "*"
-starlette = "*"
-uvicorn = "*"
-sqlalchemy = "*"
+fastapi = "==0.92.0"
+python-decouple = '==3.8'
+requests = '==2.31.0'
+starlette = '==0.25.0'
+uvicorn = '==0.24.0'
+sqlalchemy = '==2.0.23'
 
 [dev-packages]
 
